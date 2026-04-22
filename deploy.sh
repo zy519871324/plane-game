@@ -16,6 +16,9 @@ echo "🚀 开始部署雷电战机游戏..."
 if command -v apt-get &> /dev/null; then
     PKG_MANAGER="apt-get"
     INSTALL_CMD="apt-get install -y"
+elif command -v dnf &> /dev/null; then
+    PKG_MANAGER="dnf"
+    INSTALL_CMD="dnf install -y"
 elif command -v yum &> /dev/null; then
     PKG_MANAGER="yum"
     INSTALL_CMD="yum install -y"
