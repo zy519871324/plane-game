@@ -16,10 +16,10 @@
             <p class="subtitle">经典打飞机升级游戏</p>
             <div class="instructions">
                 <p>🎮 <strong>操作说明：</strong></p>
-                <p>WASD / 方向键：移动飞机</p>
+                <p>WASD / 方向键：移动战机</p>
                 <p>空格键 / 鼠标左键：发射子弹</p>
                 <p>B：使用炸弹清屏</p>
-                <p>P：暂停游戏</p>
+                <p>P / Esc：暂停游戏</p>
             </div>
             <button id="start-btn" class="btn btn-primary">开始游戏</button>
         </div>
@@ -27,26 +27,44 @@
         <!-- 游戏 HUD -->
         <div id="hud" class="screen hidden">
             <div class="hud-top">
-                <div class="hud-item">❤️ 生命: <span id="lives">3</span></div>
-                <div class="hud-item">🔥 火力: <span id="power">1</span></div>
-                <div class="hud-item">⭐ 分数: <span id="score">0</span></div>
-                <div class="hud-item">🎯 关卡: <span id="level">1</span></div>
+                <div class="hud-group">
+                    <div class="hud-item">❤️ <span id="lives">3</span></div>
+                    <div class="hud-item">🔥 <span id="power">1</span></div>
+                </div>
+                <div class="hud-group">
+                    <div class="hud-item">⭐ <span id="score">0</span></div>
+                    <div class="hud-item">📖 <span id="chapter">1</span>-<span id="level">1</span></div>
+                </div>
+            </div>
+            <div class="hud-center" id="combo-display">
+                <span id="combo">0</span> 连击
             </div>
             <div class="hud-bottom">
-                <div class="hud-item">💣 炸弹: <span id="bombs">3</span></div>
-                <div class="hud-item">⚡ 能量: <span id="energy">0</span>%</div>
+                <div class="hud-group">
+                    <div class="hud-item">💣 <span id="bombs">3</span></div>
+                    <div class="hud-item">⚡ <span id="energy">0</span>%</div>
+                </div>
+                <div class="progress-bars">
+                    <div class="progress-bar energy-bar-wrap">
+                        <div class="progress-fill" id="energy-bar"></div>
+                    </div>
+                    <div class="progress-bar level-bar-wrap">
+                        <div class="progress-fill level-fill" id="level-progress"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- 暂停界面 -->
         <div id="pause-screen" class="screen hidden">
-            <h2>游戏暂停</h2>
+            <h2>⏸ 游戏暂停</h2>
             <button id="resume-btn" class="btn btn-primary">继续游戏</button>
         </div>
 
         <!-- 升级界面 -->
         <div id="upgrade-screen" class="screen hidden">
             <h2>🆙 战机升级</h2>
+            <p class="upgrade-sub">第 <span id="upgrade-chapter">1</span> 章 第 <span id="upgrade-level">1</span> 关完成</p>
             <p>选择一项升级：</p>
             <div class="upgrades">
                 <button class="btn upgrade-btn" data-type="power">
@@ -70,9 +88,29 @@
 
         <!-- 游戏结束界面 -->
         <div id="gameover-screen" class="screen hidden">
-            <h2>游戏结束</h2>
-            <p class="final-score">最终得分: <span id="final-score">0</span></p>
-            <p class="final-level">到达关卡: <span id="final-level">1</span></p>
+            <h2>💥 游戏结束</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">最终得分</div>
+                    <div class="stat-value" id="final-score">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">到达章节</div>
+                    <div class="stat-value" id="final-chapter">1</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">到达关卡</div>
+                    <div class="stat-value" id="final-level">1</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">最大连击</div>
+                    <div class="stat-value" id="final-combo">0</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">击杀总数</div>
+                    <div class="stat-value" id="final-kills">0</div>
+                </div>
+            </div>
             <button id="restart-btn" class="btn btn-primary">重新开始</button>
         </div>
     </div>
