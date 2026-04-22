@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷电战机 - 打飞机升级游戏</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- 开始界面 -->
+        <div id="start-screen" class="screen">
+            <h1>⚡ 雷电战机 ⚡</h1>
+            <p class="subtitle">经典打飞机升级游戏</p>
+            <div class="instructions">
+                <p>🎮 <strong>操作说明：</strong></p>
+                <p>WASD / 方向键：移动飞机</p>
+                <p>空格键 / 鼠标左键：发射子弹</p>
+                <p>B：使用炸弹清屏</p>
+                <p>P：暂停游戏</p>
+            </div>
+            <button id="start-btn" class="btn btn-primary">开始游戏</button>
+        </div>
+
+        <!-- 游戏 HUD -->
+        <div id="hud" class="screen hidden">
+            <div class="hud-top">
+                <div class="hud-item">❤️ 生命: <span id="lives">3</span></div>
+                <div class="hud-item">🔥 火力: <span id="power">1</span></div>
+                <div class="hud-item">⭐ 分数: <span id="score">0</span></div>
+                <div class="hud-item">🎯 关卡: <span id="level">1</span></div>
+            </div>
+            <div class="hud-bottom">
+                <div class="hud-item">💣 炸弹: <span id="bombs">3</span></div>
+                <div class="hud-item">⚡ 能量: <span id="energy">0</span>%</div>
+            </div>
+        </div>
+
+        <!-- 暂停界面 -->
+        <div id="pause-screen" class="screen hidden">
+            <h2>游戏暂停</h2>
+            <button id="resume-btn" class="btn btn-primary">继续游戏</button>
+        </div>
+
+        <!-- 升级界面 -->
+        <div id="upgrade-screen" class="screen hidden">
+            <h2>🆙 战机升级</h2>
+            <p>选择一项升级：</p>
+            <div class="upgrades">
+                <button class="btn upgrade-btn" data-type="power">
+                    <div class="upgrade-title">🔥 火力强化</div>
+                    <div class="upgrade-desc">子弹数量 +1，伤害提升</div>
+                </button>
+                <button class="btn upgrade-btn" data-type="speed">
+                    <div class="upgrade-title">⚡ 速度提升</div>
+                    <div class="upgrade-desc">移动速度 +15%，射速 +10%</div>
+                </button>
+                <button class="btn upgrade-btn" data-type="shield">
+                    <div class="upgrade-title">🛡️ 护盾强化</div>
+                    <div class="upgrade-desc">获得护盾，可抵挡1次伤害</div>
+                </button>
+                <button class="btn upgrade-btn" data-type="bomb">
+                    <div class="upgrade-title">💣 炸弹补充</div>
+                    <div class="upgrade-desc">炸弹 +2，清屏并造成大量伤害</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- 游戏结束界面 -->
+        <div id="gameover-screen" class="screen hidden">
+            <h2>游戏结束</h2>
+            <p class="final-score">最终得分: <span id="final-score">0</span></p>
+            <p class="final-level">到达关卡: <span id="final-level">1</span></p>
+            <button id="restart-btn" class="btn btn-primary">重新开始</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
